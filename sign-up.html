@@ -1478,13 +1478,13 @@
         // back to login
         var messageData = { key: 'ACTION', value: 'GO_TO_HOME' };
 
-        FlutterChannel.postMessage(JSON.stringify(messageData));
+        window.FlutterChannel.postMessage(JSON.stringify(messageData));
     }
     function skipToHome() {
         // back to login
         var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
 
-        FlutterChannel.postMessage(JSON.stringify(messageData));
+        window.FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 </script>
 
