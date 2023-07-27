@@ -269,8 +269,11 @@
 </body>
 <script type="text/javascript" language="javascript">
   const buttonsDoc = document.getElementsByClassName("buttons")
+
+  const buttonCancel = document.createComment("button");
+  buttonCancel.innerText = 'Skip'
   if (buttonsDoc) {
-    buttonsDoc[0].appendChild = `<button id="cancel" aria-label="Hủy bỏ" formnovalidate="">Hủy bỏ</button>`
+    buttonsDoc[0].appendChild(buttonCancel)
   }
 </script>
 
