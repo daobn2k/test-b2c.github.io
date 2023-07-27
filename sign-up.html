@@ -6,7 +6,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
         type="text/css" />
     <style id="common">
@@ -1412,6 +1411,18 @@
             cursor: pointer;
         }
 
+        #backtologin {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+        }
+
+        #backtologin img {
+            width: 10px;
+            height: 10px;
+        }
+
         #backtologin p {
             font-family: Roboto;
             font-size: 12px;
@@ -1421,9 +1432,6 @@
             text-align: center;
 
             color: #EB2227;
-            display: flex;
-            align-items: center;
-
         }
 
         .buttons-group {
@@ -1450,11 +1458,12 @@
                             alt="">
                         <div id="api" role="main"></div>
                         <div class="buttons-group">
-                            <div id="backtologin" onclick="goToHome()">
-                                <i style='font-size:24px;color:red' class='fas'>&#xf0d9;</i>
+                            <div id="backtologin" onclick="backToLogin()">
+                                <img src='https://sunworlddemo.b2clogin.com/static/tenant/templates/images/left-arrow.svg'
+                                    alt='' />
                                 <p>Back to login</p>
                             </div>
-                            <div id="skip" onclick="skipToHome()">
+                            <div id="skip" onclick="goToHome()">
                                 <p>Skip</p>
                             </div>
 
@@ -1466,7 +1475,7 @@
     </div>
 </body>
 
-<script type="text/javascript" language="javascript">
+<script>
     // Set up the JavaScript Channel
     function setupChannel() {
         // Define a method to post messages to Flutter
@@ -1479,17 +1488,16 @@
 
     // Call the setupChannel function when the DOM is loaded
     document.addEventListener('DOMContentLoaded', setupChannel);
-    function goToHome() {
-        // back to login
-        var messageData = { key: 'ACTION', value: 'GO_TO_HOME' };
 
-        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+    // Function to send messages from WebView to Flutter
+    function backToLogin() {
+        var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' }; // Replace with your message data
+        FlutterChannel.postMessage(JSON.stringify(messageData));
     }
-    function skipToHome() {
-        // back to login
-        var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
 
-        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+    function goToHome() {
+        var messageData = { key: 'ACTION', value: 'GO_TO_HOME' }; // Replace with your message data
+        FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 </script>
 

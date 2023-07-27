@@ -275,17 +275,34 @@
     </div>
     <div id="api">
     </div>
-    <div id="skip" onclick="skipToHome()">
+    <div id="skip" onclick="goToHome()">
       <p>Skip</p>
     </div>
   </div>
 </body>
 <script type="text/javascript" language="javascript">
-  function skipToHome() {
-    // back to login
-    var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
+  // Set up the JavaScript Channel
+  function setupChannel() {
+    // Define a method to post messages to Flutter
+    window.FlutterChannel = {
+      postMessage: function (message) {
+        window.webkit.messageHandlers.FlutterChannel.postMessage(message);
+      },
+    };
+  }
 
-    window.FlutterChannel.postMessage(JSON.stringify(messageData));
+  // Call the setupChannel function when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', setupChannel);
+
+  // Function to send messages from WebView to Flutter
+  function backToLogin() {
+    var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' }; // Replace with your message data
+    FlutterChannel.postMessage(JSON.stringify(messageData));
+  }
+
+  function goToHome() {
+    var messageData = { key: 'ACTION', value: 'GO_TO_HOME' }; // Replace with your message data
+    FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 </script>
 
