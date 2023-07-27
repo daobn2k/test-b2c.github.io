@@ -1410,6 +1410,12 @@
             text-align: center;
             cursor: pointer;
         }
+
+        .buttons-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     </style>
 </head>
 
@@ -1425,11 +1431,13 @@
                         <img src="https://aadcdn.msftauthimages.net/447973e2-a2-eoqeogcge5mdrhuy8efcky0raxdokrllzxhp9ubg/logintenantbranding/0/bannerlogo?ts=638252638416494728"
                             alt="">
                         <div id="api" role="main"></div>
-                        <div id="skip" onclick="skipToHome()">
-                            <p>Skip</p>
-                        </div>
-                        <div id="backtologin" onclick="goToHome()">
-                            <p>Back to login</p>
+                        <div class="buttons-group">
+                            <div id="skip" onclick="skipToHome()">
+                                <p>Skip</p>
+                            </div>
+                            <div id="backtologin" onclick="goToHome()">
+                                <p>Back to login</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1439,17 +1447,29 @@
 </body>
 
 <script type="text/javascript" language="javascript">
+    // Set up the JavaScript Channel
+    function setupChannel() {
+        // Define a method to post messages to Flutter
+        window.FlutterChannel = {
+            postMessage: function (message) {
+                window.webkit.messageHandlers.FlutterChannel.postMessage(message);
+            },
+        };
+    }
+
+    // Call the setupChannel function when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', setupChannel);
     function goToHome() {
         // back to login
         var messageData = { key: 'ACTION', value: 'GO_TO_HOME' };
 
-        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+        FlutterChannel.postMessage(JSON.stringify(messageData));
     }
     function skipToHome() {
         // back to login
         var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
 
-        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+        FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 </script>
 
