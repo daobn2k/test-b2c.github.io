@@ -1331,6 +1331,10 @@
             text-indent: 20px !important;
         }
 
+        input::placeholder {
+            color: #595959
+        }
+
         .buttons {
             margin: 0 !important;
 
@@ -1456,17 +1460,19 @@
                     <div class="panel-body">
                         <img src="https://aadcdn.msftauthimages.net/447973e2-a2-eoqeogcge5mdrhuy8efcky0raxdokrllzxhp9ubg/logintenantbranding/0/bannerlogo?ts=638252638416494728"
                             alt="">
-                        <div id="api" role="main"></div>
-                        <div class="buttons-group">
-                            <div id="backtologin" onclick="backToLogin()">
-                                <img src='https://sunworlddemo.b2clogin.com/static/tenant/templates/images/left-arrow.svg'
-                                    alt='' />
-                                <p>Back to login</p>
-                            </div>
-                            <div id="skip" onclick="goToHome()">
-                                <p>Skip</p>
-                            </div>
+                        <div id="api" role="main">
 
+                            <div class="buttons-group">
+                                <div id="backtologin" onclick="backToLogin()">
+                                    <img src='https://sunworlddemo.b2clogin.com/static/tenant/templates/images/left-arrow.svg'
+                                        alt='' />
+                                    <p>Back to login</p>
+                                </div>
+                                <div id="skip" onclick="goToHome()">
+                                    <p>Skip</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
