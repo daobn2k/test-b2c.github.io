@@ -265,15 +265,14 @@
     </div>
     <div id="api">
     </div>
+    <div id="skip" onclick="handleClick()">
+      <p>Skip</p>
+    </div>
   </div>
 </body>
 <script type="text/javascript" language="javascript">
-  const buttonsDoc = document.getElementsByClassName("buttons")
-
-  const buttonCancel = document.createComment("button");
-  buttonCancel.innerText = 'Skip'
-  if (buttonsDoc) {
-    buttonsDoc[0].appendChild(buttonCancel)
+  const handleClick = () => {
+    window.location.href = 'https://jwt.ms/'
   }
 </script>
 
