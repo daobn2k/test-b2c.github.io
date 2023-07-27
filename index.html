@@ -275,14 +275,17 @@
     </div>
     <div id="api">
     </div>
-    <div id="skip" onclick="handleClick()">
+    <div id="skip" onclick="skipToHome()">
       <p>Skip</p>
     </div>
   </div>
 </body>
 <script type="text/javascript" language="javascript">
-  function handleClick() {
-    return window.location.href = 'https://localhost/';
+  function skipToHome() {
+    // back to login
+    var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
+
+    window.FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 </script>
 

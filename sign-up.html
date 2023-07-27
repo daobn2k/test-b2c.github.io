@@ -517,7 +517,8 @@
             font-size: 1em;
             color: #505050;
             box-shadow: none;
-            text-align: left
+            text-align: left;
+            display: 'none';
         }
 
         .buttons #cancel:hover {
@@ -1399,6 +1400,16 @@
             font-size: 12px;
             font-family: Roboto;
         }
+
+        #skip {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: center;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -1414,11 +1425,32 @@
                         <img src="https://aadcdn.msftauthimages.net/447973e2-a2-eoqeogcge5mdrhuy8efcky0raxdokrllzxhp9ubg/logintenantbranding/0/bannerlogo?ts=638252638416494728"
                             alt="">
                         <div id="api" role="main"></div>
+                        <div id="skip" onclick="skipToHome()">
+                            <p>Skip</p>
+                        </div>
+                        <div id="backtologin" onclick="goToHome()">
+                            <p>Back to login</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+<script type="text/javascript" language="javascript">
+    function goToHome() {
+        // back to login
+        var messageData = { key: 'ACTION', value: 'GO_TO_HOME' };
+
+        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+    }
+    function skipToHome() {
+        // back to login
+        var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' };
+
+        window.FlutterChannel.postMessage(JSON.stringify(messageData));
+    }
+</script>
 
 </html>
