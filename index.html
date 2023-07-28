@@ -306,12 +306,12 @@
 
   // Function to send messages from WebView to Flutter
   function backToLogin() {
-    var messageData = { key: 'ACTION', value: 'BACK_TO_LOGIN' }; // Replace with your message data
+    var messageData = { action: 'BACK_TO_LOGIN' }; // Replace with your message data
     FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 
   function goToHome() {
-    var messageData = { key: 'ACTION', value: 'GO_TO_HOME' }; // Replace with your message data
+    var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
     FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 </script>
