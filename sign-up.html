@@ -1546,6 +1546,7 @@
     const DomPhoneNumber = document.getElementById('extension_Phonenumber');
     const DomLastName = document.getElementById('extension_Lastname');
     const DomFirstName = document.getElementById('extension_Firstname');
+    const DomDisplayName = document.getElementById('displayName');
 
 
     const DomLabelEmail = document.getElementById('email_label');
@@ -1553,7 +1554,8 @@
     const DomLabelRePassword = document.getElementById('reenterPassword_label');
     const DomLabelPhoneNumber = document.getElementById('extension_Phonenumber_label');
     const DomLabelLastName = document.getElementById('extension_Lastname_label');
-    const DomLabelFirstName = document.getElementById('extension_Firstname');
+    const DomLabelFirstName = document.getElementById('extension_FirstName_label');
+    const DomLabelDisplayName = document.getElementById('displayName_label');
 
     // Set up the JavaScript Channel
     function setupChannel() {
@@ -1699,6 +1701,26 @@
     DomFirstName.addEventListener('blur', (event) => {
         const valueInput = DomFirstName.value;
         if (!valueInput) return DomLabelFirstName.style.visibility = 'visible';
+    })
+    // displayname name
+    DomDisplayName.addEventListener('input', (event) => {
+        const valueInput = DomDisplayName.value;
+
+        if (valueInput) {
+            DomLabelDisplayName.style.visibility = 'hidden';
+        } else {
+            DomLabelDisplayName.style.visibility = 'visible';
+        }
+    });
+
+    DomDisplayName.addEventListener('focus', (event) => {
+        const valueInput = DomDisplayName.value;
+        DomLabelDisplayName.style.visibility = 'hidden';
+    })
+
+    DomDisplayName.addEventListener('blur', (event) => {
+        const valueInput = DomDisplayName.value;
+        if (!valueInput) return DomLabelDisplayName.style.visibility = 'visible';
     })
 
 </script>
