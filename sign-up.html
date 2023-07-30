@@ -1573,9 +1573,10 @@
 
 
     const valueInputEmail = DomInputEmail.value
-
     if (valueInputEmail) {
-        DomInputEmail.hidden()
+        DomInputEmail.style.visibility = 'hidden'
+    } else {
+        DomInputEmail.style.visible = 'visible'
     }
 
 </script>
