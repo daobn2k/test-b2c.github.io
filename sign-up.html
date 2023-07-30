@@ -1465,8 +1465,8 @@
         .attrEntry label {
             width: fit-content;
 
-            left: 20px;
-            top: 34px;
+            left: 24px;
+            top: 36px;
             z-index: 10;
 
             color: #595959;
@@ -1531,16 +1531,6 @@
                             <div id="skip" onclick="goToHome()">
                                 <p>Skip</p>
                             </div>
-                            <div class="attrEntry">
-                                <label id="email_label" for="email">Email Address</label>
-                                <div class="error itemLevel" role="alert"></div>
-                                <input id="email" class="textInput" type="email" placeholder="Email Address"
-                                    aria-label="Email Address"
-                                    pattern="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
-                                    title="Email address that can be used to contact you." aria-required="true"
-                                    autofocus="autofocus" /><a class="helpLink tiny" href="javascript:void(0)"
-                                    data-help="Email address that can be used to contact you.">What is this?</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1554,12 +1544,16 @@
     const DomNewPassword = document.getElementById('newPassword');
     const DomReenterPassword = document.getElementById('reenterPassword');
     const DomPhoneNumber = document.getElementById('extension_Phonenumber');
+    const DomLastName = document.getElementById('extension_Lastname');
+    const DomFirstName = document.getElementById('extension_Firstname');
 
 
     const DomLabelEmail = document.getElementById('email_label');
     const DomLabelPassword = document.getElementById('newPassword_label');
     const DomLabelRePassword = document.getElementById('reenterPassword_label');
     const DomLabelPhoneNumber = document.getElementById('extension_Phonenumber_label');
+    const DomLabelLastName = document.getElementById('extension_Lastname_label');
+    const DomLabelFirstName = document.getElementById('extension_Firstname');
 
     // Set up the JavaScript Channel
     function setupChannel() {
@@ -1664,6 +1658,47 @@
     DomPhoneNumber.addEventListener('blur', (event) => {
         const valueInput = DomPhoneNumber.value;
         if (!valueInput) return DomLabelPhoneNumber.style.visibility = 'visible';
+    })
+    // last name
+    DomLastName.addEventListener('input', (event) => {
+        const valueInput = DomLastName.value;
+
+        if (valueInput) {
+            DomLabelLastName.style.visibility = 'hidden';
+        } else {
+            DomLabelLastName.style.visibility = 'visible';
+        }
+    });
+
+    DomLastName.addEventListener('focus', (event) => {
+        const valueInput = DomLastName.value;
+        DomLabelLastName.style.visibility = 'hidden';
+    })
+
+    DomLastName.addEventListener('blur', (event) => {
+        const valueInput = DomLastName.value;
+        if (!valueInput) return DomLabelLastName.style.visibility = 'visible';
+    })
+
+    // fisrt name
+    DomFirstName.addEventListener('input', (event) => {
+        const valueInput = DomFirstName.value;
+
+        if (valueInput) {
+            DomLabelFirstName.style.visibility = 'hidden';
+        } else {
+            DomLabelFirstName.style.visibility = 'visible';
+        }
+    });
+
+    DomFirstName.addEventListener('focus', (event) => {
+        const valueInput = DomFirstName.value;
+        DomLabelFirstName.style.visibility = 'hidden';
+    })
+
+    DomFirstName.addEventListener('blur', (event) => {
+        const valueInput = DomFirstName.value;
+        if (!valueInput) return DomLabelFirstName.style.visibility = 'visible';
     })
 
 </script>
