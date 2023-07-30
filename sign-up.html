@@ -1572,14 +1572,14 @@
         FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 
-
-    const valueInputEmail = DomInputEmail.value
-    if (valueInputEmail) {
-        DomLabelEmail.style.visibility = 'hidden'
-    } else {
-        DomLabelEmail.style.visibility = 'visible'
-    }
-
+    DomInputEmail.addEventListener('change', () => {
+        const valueInputEmail = DomInputEmail.value
+        if (valueInputEmail) {
+            DomLabelEmail.style.visibility = 'hidden'
+        } else {
+            DomLabelEmail.style.visibility = 'visible'
+        }
+    })
 </script>
 
 </html>
