@@ -1547,6 +1547,7 @@
 <script>
 
     const DomInputEmail = document.getElementById('email')
+    const DomLabelEmail = document.getElementById('email_label')
     // Set up the JavaScript Channel
     function setupChannel() {
         // Define a method to post messages to Flutter
@@ -1574,9 +1575,9 @@
 
     const valueInputEmail = DomInputEmail.value
     if (valueInputEmail) {
-        DomInputEmail.style.visibility = 'hidden'
+        DomLabelEmail.style.visibility = 'hidden'
     } else {
-        DomInputEmail.style.visible = 'visible'
+        DomLabelEmail.style.visible = 'visible'
     }
 
 </script>
