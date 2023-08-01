@@ -1549,6 +1549,10 @@
     const DomFirstName = document.getElementById('extension_FirstName');
     const DomDisplayName = document.getElementById('displayName');
     const DomEmailVerificationCode = document.getElementById('emailVerificationCode');
+    const DomInputValidMissMatch = document.getElementById('requiredFieldMissing');
+    const DomValidPasswordEntry = document.getElementById('passwordEntryMismatch');
+    const DomClaimVerificationServerError = document.getElementById('claimVerificationServerError');
+    const DomFieldIncorrect = document.getElementById('fieldIncorrect');
 
 
     const DomLabelEmail = document.getElementById('email_label');
@@ -1584,6 +1588,13 @@
         FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 
+
+    const hideMessageError = () => {
+        DomInputValidMissMatch.style.display = 'none'
+        DomValidPasswordEntry.style.display = 'none'
+        DomClaimVerificationServerError.style.display = 'none'
+        DomFieldIncorrect.style.display = 'none'
+    }
     // email
     DomInputEmail.addEventListener('input', (event) => {
         const valueInput = DomInputEmail.value;
@@ -1593,6 +1604,7 @@
         } else {
             DomLabelEmail.style.visibility = 'visible';
         }
+        hideMessageError()
     });
     DomEmailVerificationCode.addEventListener('input', (event) => {
         const valueInput = DomEmailVerificationCode.value;
@@ -1602,6 +1614,7 @@
         } else {
             DomLabelEmailVerificationCode.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomInputEmail.addEventListener('focus', (event) => {
@@ -1622,6 +1635,7 @@
         } else {
             DomLabelPassword.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomNewPassword.addEventListener('focus', (event) => {
@@ -1642,6 +1656,7 @@
         } else {
             DomLabelRePassword.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomReenterPassword.addEventListener('focus', (event) => {
@@ -1662,6 +1677,7 @@
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomPhoneNumber.addEventListener('focus', (event) => {
@@ -1682,6 +1698,7 @@
         } else {
             DomLabelLastName.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomLastName.addEventListener('focus', (event) => {
@@ -1703,6 +1720,7 @@
         } else {
             DomLabelFirstName.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomFirstName.addEventListener('focus', (event) => {
@@ -1723,6 +1741,7 @@
         } else {
             DomLabelDisplayName.style.visibility = 'visible';
         }
+        hideMessageError()
     });
 
     // DomDisplayName.addEventListener('focus', (event) => {
