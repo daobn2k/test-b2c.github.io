@@ -1560,6 +1560,7 @@
     const DomValidPasswordEntry = document.getElementById('passwordEntryMismatch');
     const DomClaimVerificationServerError = document.getElementById('claimVerificationServerError');
     const DomFieldIncorrect = document.getElementById('fieldIncorrect');
+    const DomPassword = document.getElementsByClassName('Password');
 
 
     const DomLabelEmail = document.getElementById('email_label');
@@ -1639,7 +1640,7 @@
 
         if (valueInput) {
             DomLabelPassword.style.visibility = 'hidden';
-            DomNewPassword.classList.add('hasValue')
+            DomPassword[0].classList.add('hasValue')
         } else {
             DomLabelPassword.style.visibility = 'visible';
         }
@@ -1661,7 +1662,7 @@
 
         if (valueInput) {
             DomLabelRePassword.style.visibility = 'hidden';
-            DomReenterPassword.classList.add('hasValue')
+            DomPassword[1].classList.add('hasValue')
         } else {
             DomLabelRePassword.style.visibility = 'visible';
         }
