@@ -1501,6 +1501,10 @@
             bottom: 0;
         }
 
+        .hasValue .error {
+            position: relative !important;
+        }
+
         .VerificationControl .attrEntry::before {
             display: none;
         }
@@ -1635,6 +1639,7 @@
 
         if (valueInput) {
             DomLabelPassword.style.visibility = 'hidden';
+            DomNewPassword.classList.add('hasValue')
         } else {
             DomLabelPassword.style.visibility = 'visible';
         }
@@ -1656,6 +1661,7 @@
 
         if (valueInput) {
             DomLabelRePassword.style.visibility = 'hidden';
+            DomReenterPassword.classList.add('hasValue')
         } else {
             DomLabelRePassword.style.visibility = 'visible';
         }
