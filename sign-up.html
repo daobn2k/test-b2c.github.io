@@ -1461,13 +1461,16 @@
 
         .attrEntry {
             position: relative;
+
+            display: flex;
+            flex-direction: column-reverse;
         }
 
         .attrEntry label {
             width: fit-content;
 
             left: 24px;
-            top: 36px;
+            top: -32px;
             z-index: 10;
 
             color: #595959;
@@ -1495,7 +1498,7 @@
 
         .attrEntry .error {
             position: absolute;
-            top: 0;
+            bottom: 0;
         }
 
         .VerificationControl .attrEntry::before {
