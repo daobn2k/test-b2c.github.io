@@ -314,7 +314,7 @@
   function goToHome() {
     var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
     console.log(window, 'window')
-    window.postMessage(messageData, '*')
+    window.opener.postMessage(messageData, 'http://localhost:3000/')
     FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 </script>
