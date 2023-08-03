@@ -1595,8 +1595,12 @@
 
     function goToHome() {
         var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
-        window.postMessage(messageData, '*')
+        const channel = new BroadcastChannel("event_action");
+        channel.postMessage(messageData);
+
         FlutterChannel.postMessage(JSON.stringify(messageData));
+
+
     }
 
 
