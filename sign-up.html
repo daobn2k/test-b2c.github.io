@@ -1595,10 +1595,8 @@
 
     function goToHome() {
         var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
-        if (FlutterChannel) {
-            FlutterChannel.postMessage(JSON.stringify(messageData));
-        }
         window.postMessage(messageData, '*')
+        FlutterChannel.postMessage(JSON.stringify(messageData));
     }
 
 
