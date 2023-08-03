@@ -1588,16 +1588,17 @@
     // Function to send messages from WebView to Flutter
     function backToLogin() {
         var messageData = { action: 'BACK_TO_LOGIN' }; // Replace with your message data
-        FlutterChannel.postMessage(JSON.stringify(messageData));
+        if (FlutterChannel) {
+            FlutterChannel.postMessage(JSON.stringify(messageData));
+        }
     }
 
     function goToHome() {
         var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
-        const targetFrame = window.top.frames[1];
-        targetFrame.postMessage(messageData, '*')
-
-        FlutterChannel.postMessage(JSON.stringify(messageData));
-
+        if (FlutterChannel) {
+            FlutterChannel.postMessage(JSON.stringify(messageData));
+        }
+        window.postMessage(messageData, '*')
     }
 
 
