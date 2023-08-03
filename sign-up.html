@@ -1592,11 +1592,10 @@
     }
 
     function goToHome() {
-
+        var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
         const targetFrame = window.top.frames[1];
         targetFrame.postMessage(messageData, '*')
 
-        var messageData = { action: 'GO_TO_HOME' }; // Replace with your message data
         FlutterChannel.postMessage(JSON.stringify(messageData));
 
     }
