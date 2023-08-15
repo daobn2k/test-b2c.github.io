@@ -1553,6 +1553,10 @@
 </body>
 
 <script>
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const locales = urlParams.get('vi_locales');
     const DomInputEmail = document.getElementById('email');
     const DomNewPassword = document.getElementById('newPassword');
     const DomReenterPassword = document.getElementById('reenterPassword');
@@ -1566,6 +1570,7 @@
     const DomClaimVerificationServerError = document.getElementById('claimVerificationServerError');
     const DomFieldIncorrect = document.getElementById('fieldIncorrect');
     const DomPassword = document.getElementsByClassName('Password');
+    const DomContinue = document.getElementsByClassName('continue');
 
 
     const DomLabelEmail = document.getElementById('email_label');
@@ -1585,6 +1590,8 @@
                 window.webkit.messageHandlers.FlutterChannel.postMessage(message);
             },
         };
+
+        DomPhoneNumber.setAttribute('pattern', "[1-9][0-9]*");
     }
 
     // Call the setupChannel function when the DOM is loaded
@@ -1634,17 +1641,6 @@
         }
         hideMessageError()
     });
-
-    // DomInputEmail.addEventListener('focus', (event) => {
-    //     const valueInput = DomInputEmail.value;
-    //     DomLabelEmail.style.visibility = 'hidden';
-    // })
-
-    // DomInputEmail.addEventListener('blur', (event) => {
-    //     const valueInput = DomInputEmail.value;
-    //     if (!valueInput) return DomLabelEmail.style.visibility = 'visible';
-    // })
-    // new pass js
     DomNewPassword.addEventListener('input', (event) => {
         const valueInput = DomNewPassword.value;
 
@@ -1656,17 +1652,6 @@
         }
         hideMessageError()
     });
-
-    // DomNewPassword.addEventListener('focus', (event) => {
-    //     const valueInput = DomNewPassword.value;
-    //     DomLabelPassword.style.visibility = 'hidden';
-    // })
-
-    // DomNewPassword.addEventListener('blur', (event) => {
-    //     const valueInput = DomNewPassword.value;
-    //     if (!valueInput) return DomLabelPassword.style.visibility = 'visible';
-    // })
-    // confirm password
     DomReenterPassword.addEventListener('input', (event) => {
         const valueInput = DomReenterPassword.value;
 
@@ -1679,16 +1664,7 @@
         hideMessageError()
     });
 
-    // DomReenterPassword.addEventListener('focus', (event) => {
-    //     const valueInput = DomReenterPassword.value;
-    //     DomLabelRePassword.style.visibility = 'hidden';
-    // })
 
-    // DomReenterPassword.addEventListener('blur', (event) => {
-    //     const valueInput = DomReenterPassword.value;
-    //     if (!valueInput) return DomLabelRePassword.style.visibility = 'visible';
-    // })
-    // phone number
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
 
@@ -1698,18 +1674,9 @@
             DomLabelPhoneNumber.style.visibility = 'visible';
         }
         hideMessageError()
+
+
     });
-
-    // DomPhoneNumber.addEventListener('focus', (event) => {
-    //     const valueInput = DomPhoneNumber.value;
-    //     DomLabelPhoneNumber.style.visibility = 'hidden';
-    // })
-
-    // DomPhoneNumber.addEventListener('blur', (event) => {
-    //     const valueInput = DomPhoneNumber.value;
-    //     if (!valueInput) return DomLabelPhoneNumber.style.visibility = 'visible';
-    // })
-    // last name
     DomLastName.addEventListener('input', (event) => {
         const valueInput = DomLastName.value;
 
@@ -1720,18 +1687,6 @@
         }
         hideMessageError()
     });
-
-    // DomLastName.addEventListener('focus', (event) => {
-    //     const valueInput = DomLastName.value;
-    //     DomLabelLastName.style.visibility = 'hidden';
-    // })
-
-    // DomLastName.addEventListener('blur', (event) => {
-    //     const valueInput = DomLastName.value;
-    //     if (!valueInput) return DomLabelLastName.style.visibility = 'visible';
-    // })
-
-    // fisrt name
     DomFirstName.addEventListener('input', (event) => {
         const valueInput = DomFirstName.value;
 
@@ -1742,17 +1697,6 @@
         }
         hideMessageError()
     });
-
-    // DomFirstName.addEventListener('focus', (event) => {
-    //     const valueInput = DomFirstName.value;
-    //     DomLabelFirstName.style.visibility = 'hidden';
-    // })
-
-    // DomFirstName.addEventListener('blur', (event) => {
-    //     const valueInput = DomFirstName.value;
-    //     if (!valueInput) return DomLabelFirstName.style.visibility = 'visible';
-    // })
-    // displayname name
     DomDisplayName.addEventListener('input', (event) => {
         const valueInput = DomDisplayName.value;
 
@@ -1763,17 +1707,6 @@
         }
         hideMessageError()
     });
-
-    // DomDisplayName.addEventListener('focus', (event) => {
-    //     const valueInput = DomDisplayName.value;
-    //     DomLabelDisplayName.style.visibility = 'hidden';
-    // })
-
-    // DomDisplayName.addEventListener('blur', (event) => {
-    //     const valueInput = DomDisplayName.value;
-    //     if (!valueInput) return DomLabelDisplayName.style.visibility = 'visible';
-    // })
-
 </script>
 
 </html>
