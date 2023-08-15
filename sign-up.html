@@ -1694,9 +1694,12 @@
             if (validate) {
                 DomContinue.setAttribute('disabled', true)
                 queryErrors[queryErrors.length - 2].innerHTML = validate;
+                queryErrors[queryErrors.length - 2].style.display = 'block';
             } else {
                 DomContinue.removeAttribute('disabled', false)
                 queryErrors[queryErrors.length - 2].innerHTML = '';
+                queryErrors[queryErrors.length - 2].style.display = 'none';
+
             }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
