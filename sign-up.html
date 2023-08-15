@@ -1668,12 +1668,12 @@
     const checkLanguage = () => {
         switch (locales) {
             case 'vi':
-                return 'Số điện thoại phải là số'
+                return 'Số điện thoại phải là kiểu dữ liệu số'
                 break;
             case 'en':
                 return 'Phone number must be numberic'
             default:
-                return 'Số điện thoại phải là số';
+                return 'Số điện thoại phải là kiểu dữ liệu số';
         }
     }
     function isValidPhoneNumber(phoneNumber) {
@@ -1690,23 +1690,23 @@
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
             const validate = isValidPhoneNumber(valueInput);
-            const phoneNumberDom = queryErrors[queryErrors.length - 3]
+            const phoneNumberErrorDom = queryErrors[queryErrors.length - 3]
             if (validate) {
                 DomContinue.setAttribute('disabled', true)
-                phoneNumberDom.innerHTML = validate;
-                phoneNumberDom.style.display = 'block';
+                phoneNumberErrorDom.innerHTML = validate;
+                phoneNumberErrorDom.style.display = 'block';
             } else {
                 DomContinue.removeAttribute('disabled', false)
-                phoneNumberDom.innerHTML = '';
-                phoneNumberDom.style.display = 'none';
+                phoneNumberErrorDom.innerHTML = '';
+                phoneNumberErrorDom.style.display = 'none';
 
             }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
+            DomContinue.setAttribute('disabled', false)
+            phoneNumberErrorDom.style.display = 'none';
         }
         hideMessageError()
-
-
     });
     DomLastName.addEventListener('input', (event) => {
         const valueInput = DomLastName.value;
