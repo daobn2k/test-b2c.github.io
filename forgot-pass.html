@@ -1468,6 +1468,7 @@
 </body>
 
 <script>
+    const DomInputEmail = document.getElementById('email');
     // Set up the JavaScript Channel
     function setupChannel() {
         // Define a method to post messages to Flutter
@@ -1493,6 +1494,19 @@
         window?.opener?.postMessage(messageData, '*')
         FlutterChannel.postMessage(JSON.stringify(messageData));
     }
+
+    DomInputEmail.addEventListener('input', (event) => {
+        const requiredFieldMissing = document.getElementById('requiredFieldMissing');
+        const valueInput = DomInputEmail.value;
+
+        if (valueInput) {
+            requiredFieldMissing.style.visibility = 'hidden';
+        } else {
+            requiredFieldMissing.style.visibility = 'visible';
+        }
+        hideMessageError()
+    });
+
 </script>
 
 </html>
