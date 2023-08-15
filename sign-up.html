@@ -1687,15 +1687,16 @@
 
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
-
-        console.log(queryErrors, 'queryErrors');
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
             const validate = isValidPhoneNumber(valueInput);
+            const phoneNumberDom = queryErrors[queryErrors.length - 2]
             if (validate) {
                 DomContinue.setAttribute('disabled', true)
+                queryErrors[queryErrors.length - 2].innerHTML = validate;
             } else {
                 DomContinue.removeAttribute('disabled', false)
+                queryErrors[queryErrors.length - 2].innerHTML = '';
             }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
