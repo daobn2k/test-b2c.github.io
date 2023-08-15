@@ -1687,23 +1687,23 @@
 
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
+        const phoneNumberErrorDom = queryErrors[queryErrors.length - 3]
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
             const validate = isValidPhoneNumber(valueInput);
-            const phoneNumberErrorDom = queryErrors[queryErrors.length - 3]
             if (validate) {
                 DomContinue.setAttribute('disabled', true)
                 phoneNumberErrorDom.innerHTML = validate;
                 phoneNumberErrorDom.style.display = 'block';
             } else {
-                DomContinue.removeAttribute('disabled', false)
+                DomContinue.removeAttribute('disabled')
                 phoneNumberErrorDom.innerHTML = '';
                 phoneNumberErrorDom.style.display = 'none';
 
             }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
-            DomContinue.setAttribute('disabled', false)
+            DomContinue.removeAttribute('disabled')
             phoneNumberErrorDom.style.display = 'none';
         }
         hideMessageError()
