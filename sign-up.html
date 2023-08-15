@@ -1690,15 +1690,15 @@
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
             const validate = isValidPhoneNumber(valueInput);
-            const phoneNumberDom = queryErrors[queryErrors.length - 2]
+            const phoneNumberDom = queryErrors[queryErrors.length - 3]
             if (validate) {
                 DomContinue.setAttribute('disabled', true)
-                queryErrors[queryErrors.length - 2].innerHTML = validate;
-                queryErrors[queryErrors.length - 2].style.display = 'block';
+                phoneNumberDom.innerHTML = validate;
+                phoneNumberDom.style.display = 'block';
             } else {
                 DomContinue.removeAttribute('disabled', false)
-                queryErrors[queryErrors.length - 2].innerHTML = '';
-                queryErrors[queryErrors.length - 2].style.display = 'none';
+                phoneNumberDom.innerHTML = '';
+                phoneNumberDom.style.display = 'none';
 
             }
         } else {
