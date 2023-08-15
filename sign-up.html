@@ -1571,6 +1571,7 @@
     const DomFieldIncorrect = document.getElementById('fieldIncorrect');
     const DomPassword = document.getElementsByClassName('Password');
     const DomContinue = document.getElementById('continue');
+    const queryErrors = document.getElementsByClassName('error');
 
 
     const DomLabelEmail = document.getElementById('email_label');
@@ -1687,13 +1688,14 @@
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
 
+        console.log(queryErrors, 'queryErrors');
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
             const validate = isValidPhoneNumber(valueInput);
             if (validate) {
-                DomContinue.setAttribute('disabled', 'true')
+                DomContinue.setAttribute('disabled', true)
             } else {
-                DomContinue.removeAttribute('disabled')
+                DomContinue.removeAttribute('disabled', false)
             }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
