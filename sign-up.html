@@ -1591,7 +1591,7 @@
             },
         };
 
-        DomPhoneNumber.setAttribute('pattern', "[1-9][0-9]*");
+        DomPhoneNumber.setAttribute('pattern', '[0-9]');
     }
 
     // Call the setupChannel function when the DOM is loaded
@@ -1664,12 +1664,37 @@
         hideMessageError()
     });
 
+    const checkLanguage = () => {
+        switch (locales) {
+            case 'vi':
+                return 'Số điện thoại phải là số'
+                break;
+            case 'en':
+                return 'Phone number must be numberic'
+            default:
+                break;
+        }
+    }
+    function isValidPhoneNumber(phoneNumber) {
+        for (let i = 1; i < phoneNumber.length; i++) {
+            if (isNaN(parseInt(phoneNumber.charAt(i)))) {
+                return checkLanguage();
+            }
+        }
+        return false;
+    }
 
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
 
         if (valueInput) {
             DomLabelPhoneNumber.style.visibility = 'hidden';
+            const validate = isValidPhoneNumber(valueInput);
+            if (validate) {
+                DomContinue.setAttribute('disabled', '')
+            } else {
+                DomContinue.removeAttribute('disabled')
+            }
         } else {
             DomLabelPhoneNumber.style.visibility = 'visible';
         }
