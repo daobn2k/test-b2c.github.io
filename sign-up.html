@@ -1557,9 +1557,7 @@
 
 <script>
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const locales = urlParams.get('vi_locales');
+    const locales = JSON.parse(getItem('vi_locales'))
     const DomInputEmail = document.getElementById('email');
     const DomNewPassword = document.getElementById('newPassword');
     const DomReenterPassword = document.getElementById('reenterPassword');

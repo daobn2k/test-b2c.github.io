@@ -297,13 +297,17 @@
   </div>
 </body>
 <script type="text/javascript" language="javascript">
-  const queryString = window.location.search;
+ const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const isWeb = urlParams.get('web');
+  const locales = urlParams.get('vi_locales');
 
   if(isWeb){
       localStorage.setItem('is_back',true)
-    console.log(isWeb,'hihi-isWeb');
+  }
+
+  if(locales){
+      localStorage.setItem('vi_locales',locales)
   }
     
   // Set up the JavaScript Channel
