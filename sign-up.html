@@ -1620,12 +1620,30 @@
 
     }
 
-
+    
     const hideMessageError = () => {
         DomInputValidMissMatch.style.display = 'none'
         DomValidPasswordEntry.style.display = 'none'
         DomClaimVerificationServerError.style.display = 'none'
         DomFieldIncorrect.style.display = 'none'
+    }
+    const checkLanguage = () => {
+        switch (locales) {
+            case 'vi':
+                return 'Số điện thoại phải là kiểu dữ liệu số'
+            case 'en':
+                return 'Phone number must be numberic'
+            default:
+                return 'Số điện thoại phải là kiểu dữ liệu số';
+        }
+    }
+    function isValidPhoneNumber(phoneNumber) {
+        for (let i = 0; i < phoneNumber.length; i++) {
+            if (isNaN(parseInt(phoneNumber.charAt(i)))) {
+                return checkLanguage();
+            }
+        }
+        return false;
     }
     // email
     DomInputEmail.addEventListener('input', (event) => {
@@ -1656,6 +1674,7 @@
             DomPassword[0].classList.add('hasValue')
         } else {
             DomLabelPassword.style.visibility = 'visible';
+            DomPassword[0].classList.remove('hasValue')
         }
         hideMessageError()
     });
@@ -1667,29 +1686,10 @@
             DomPassword[1].classList.add('hasValue')
         } else {
             DomLabelRePassword.style.visibility = 'visible';
+            DomPassword[1].classList.remove('hasValue')
         }
         hideMessageError()
     });
-
-    const checkLanguage = () => {
-        switch (locales) {
-            case 'vi':
-                return 'Số điện thoại phải là kiểu dữ liệu số'
-            case 'en':
-                return 'Phone number must be numberic'
-            default:
-                return 'Số điện thoại phải là kiểu dữ liệu số';
-        }
-    }
-    function isValidPhoneNumber(phoneNumber) {
-        for (let i = 0; i < phoneNumber.length; i++) {
-            if (isNaN(parseInt(phoneNumber.charAt(i)))) {
-                return checkLanguage();
-            }
-        }
-        return false;
-    }
-
     DomPhoneNumber.addEventListener('input', (event) => {
         const valueInput = DomPhoneNumber.value;
         const phoneNumberErrorDom = queryErrors[queryErrors.length - 3]
