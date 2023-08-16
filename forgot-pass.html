@@ -1484,7 +1484,11 @@
 
     // Function to send messages from WebView to Flutter
     function backToLogin() {
+        const is_back =  JSON.parse(localStorage.getItem('is_back'))
         var messageData = { action: 'BACK_TO_LOGIN' }; // Replace with your message data
+        if(is_back){
+            window.history.back();
+        }
         window?.opener?.postMessage(messageData, '*')
         FlutterChannel.postMessage(JSON.stringify(messageData));
     }

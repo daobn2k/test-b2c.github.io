@@ -297,8 +297,14 @@
   </div>
 </body>
 <script type="text/javascript" language="javascript">
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const isWeb = urlParams.get('web');
   // Set up the JavaScript Channel
   function setupChannel() {
+    if(isWeb){
+      localStorage.setItem('is_back',true)
+    }
     // Define a method to post messages to Flutter
     window.FlutterChannel = {
       postMessage: function (message) {
