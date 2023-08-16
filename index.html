@@ -302,8 +302,12 @@
   const isWeb = urlParams.get('web');
   // Set up the JavaScript Channel
   function setupChannel() {
+
+    console.log(isWeb,'isWeb');
     if(isWeb){
       localStorage.setItem('is_back',true)
+    console.log(isWeb,'hihi-isWeb');
+
     }
     // Define a method to post messages to Flutter
     window.FlutterChannel = {
