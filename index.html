@@ -300,15 +300,14 @@
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const isWeb = urlParams.get('web');
-  // Set up the JavaScript Channel
-  function setupChannel() {
 
-    console.log(isWeb,'isWeb');
-    if(isWeb){
+  if(isWeb){
       localStorage.setItem('is_back',true)
     console.log(isWeb,'hihi-isWeb');
-
-    }
+  }
+    
+  // Set up the JavaScript Channel
+  function setupChannel() {
     // Define a method to post messages to Flutter
     window.FlutterChannel = {
       postMessage: function (message) {
