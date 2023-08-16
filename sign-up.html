@@ -1682,7 +1682,7 @@
         }
     }
     function isValidPhoneNumber(phoneNumber) {
-        for (let i = 1; i < phoneNumber.length; i++) {
+        for (let i = 0; i < phoneNumber.length; i++) {
             if (isNaN(parseInt(phoneNumber.charAt(i)))) {
                 return checkLanguage();
             }
