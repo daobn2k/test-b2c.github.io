@@ -331,7 +331,6 @@
   const urlParams = new URLSearchParams(queryString);
   const isWeb = urlParams.get('web');
   const locales = urlParams.get('ui_locales');
-  const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
 
   if (isWeb) {
     localStorage.setItem('is_back', true)
@@ -416,6 +415,7 @@
 
   function makePasswordForgot() {
     const a = document.createElement('a');
+    const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
     a.setAttribute('href', hrefReset)
     a.innerText = 'Quên mật khẩu ?'
     a.classList.add('forgot-pass')
