@@ -367,12 +367,12 @@
     function toggle() {
       if (pwd.type === 'password') {
         pwd.type = 'text';
-        checkbox.classList.remove('fa-eye')
-        checkbox.classList.add('fa-eye-slash')
-      } else {
-        pwd.type = 'password';
         checkbox.classList.add('fa-eye')
         checkbox.classList.remove('fa-eye-slash')
+      } else {
+        pwd.type = 'password';
+        checkbox.classList.remove('fa-eye')
+        checkbox.classList.add('fa-eye-slash')
       }
     }
     checkbox.onclick = toggle;
