@@ -289,9 +289,9 @@
       position: relative;
     }
 
-    #forgotPassword {
+    /* #forgotPassword {
       display: none;
-    }
+    } */
   </style>
 
 <body>
@@ -399,18 +399,18 @@
   setupPwdTogglers();
 
 
-  function makePasswordForgot() {
-    const a = document.createElement('a');
-    a.setAttribute('href', hrefReset)
-    a.innerText = 'Quên mật khẩu'
-    var div = document.createElement('div');
-    div.appendChild(a);
-    div.classList.add('forgot-password')
+  // function makePasswordForgot() {
+  //   const a = document.createElement('a');
+  //   a.setAttribute('href', hrefReset)
+  //   a.innerText = 'Quên mật khẩu'
+  //   var div = document.createElement('div');
+  //   div.appendChild(a);
+  //   div.classList.add('forgot-password')
 
-    const remember = document.getElementById('rememberMe')
-    remember.insertAdjacentHTML('afterend', div);
-  }
-  makePasswordForgot();
+  //   const remember = document.getElementById('rememberMe')
+  //   remember.insertAdjacentHTML('afterend', div);
+  // }
+  // makePasswordForgot();
 </script>
 
 </html>
