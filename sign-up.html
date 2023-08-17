@@ -1533,6 +1533,16 @@
         input:-webkit-autofill:active {
             z-index: 11;
         }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 8px;
+        }
+
+        input {
+            padding-right: 12px !important;
+        }
     </style>
 </head>
 
@@ -1592,6 +1602,53 @@
     const DomLabelFirstName = document.getElementById('extension_FirstName_label');
     const DomLabelDisplayName = document.getElementById('displayName_label');
     const DomLabelEmailVerificationCode = document.getElementById('emailVerificationCode_label');
+
+    // set up eye show pass
+    function makePwdToggler(pwd) {
+        // Create show-password checkbox
+        var checkbox = document.createElement('i');
+        checkbox.classList.add('far')
+        checkbox.classList.add('fa-eye-slash')
+        var id = pwd.id + 'toggler';
+        checkbox.setAttribute('id', id);
+        checkbox.style.cursor = 'pointer'
+
+        var label = document.createElement('label');
+        label.setAttribute('for', id);
+        label.appendChild(document.createTextNode('show password'));
+
+        var div = document.createElement('div');
+
+        div.appendChild(checkbox);
+        div.classList.add('show-password')
+        // Add show-password checkbox under password input
+        pwd.insertAdjacentElement('afterend', div);
+
+        // Add toggle password callback
+        function toggle() {
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                checkbox.classList.add('fa-eye')
+                checkbox.classList.remove('fa-eye-slash')
+            } else {
+                pwd.type = 'password';
+                checkbox.classList.remove('fa-eye')
+                checkbox.classList.add('fa-eye-slash')
+            }
+        }
+        checkbox.onclick = toggle;
+        // For non-mouse usage
+        checkbox.onkeydown = toggle;
+    }
+
+    function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll('input[type=password]');
+        for (var i = 0; i < pwdInputs.length; i++) {
+            makePwdToggler(pwdInputs[i]);
+        }
+    }
+
+    setupPwdTogglers();
 
     // Set up the JavaScript Channel
     function setupChannel() {
@@ -1752,53 +1809,6 @@
         }
         hideMessageError()
     });
-
-    // set up eye show pass
-    function makePwdToggler(pwd) {
-        // Create show-password checkbox
-        var checkbox = document.createElement('i');
-        checkbox.classList.add('far')
-        checkbox.classList.add('fa-eye-slash')
-        var id = pwd.id + 'toggler';
-        checkbox.setAttribute('id', id);
-        checkbox.style.cursor = 'pointer'
-
-        var label = document.createElement('label');
-        label.setAttribute('for', id);
-        label.appendChild(document.createTextNode('show password'));
-
-        var div = document.createElement('div');
-
-        div.appendChild(checkbox);
-        div.classList.add('show-password')
-        // Add show-password checkbox under password input
-        pwd.insertAdjacentElement('afterend', div);
-
-        // Add toggle password callback
-        function toggle() {
-            if (pwd.type === 'password') {
-                pwd.type = 'text';
-                checkbox.classList.add('fa-eye')
-                checkbox.classList.remove('fa-eye-slash')
-            } else {
-                pwd.type = 'password';
-                checkbox.classList.remove('fa-eye')
-                checkbox.classList.add('fa-eye-slash')
-            }
-        }
-        checkbox.onclick = toggle;
-        // For non-mouse usage
-        checkbox.onkeydown = toggle;
-    }
-
-    function setupPwdTogglers() {
-        var pwdInputs = document.querySelectorAll('input[type=password]');
-        for (var i = 0; i < pwdInputs.length; i++) {
-            makePwdToggler(pwdInputs[i]);
-        }
-    }
-
-    setupPwdTogglers();
 </script>
 
 </html>
