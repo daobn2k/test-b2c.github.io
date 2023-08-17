@@ -16,6 +16,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -297,19 +298,19 @@
   </div>
 </body>
 <script type="text/javascript" language="javascript">
- const queryString = window.location.search;
+  const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const isWeb = urlParams.get('web');
   const locales = urlParams.get('ui_locales');
 
-  if(isWeb){
-      localStorage.setItem('is_back',true)
+  if (isWeb) {
+    localStorage.setItem('is_back', true)
   }
 
-  if(locales){
-      localStorage.setItem('ui_locales',locales)
+  if (locales) {
+    localStorage.setItem('ui_locales', locales)
   }
-    
+
   // Set up the JavaScript Channel
   function setupChannel() {
     // Define a method to post messages to Flutter
@@ -326,7 +327,7 @@
   // Function to send messages from WebView to Flutter
   function backToLogin() {
     var messageData = { action: 'BACK_TO_LOGIN' }; // Replace with your message data
-      window?.opener?.postMessage(messageData, '*')
+    window?.opener?.postMessage(messageData, '*')
     FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 
@@ -336,45 +337,44 @@
     FlutterChannel.postMessage(JSON.stringify(messageData));
   }
 
-  function makePwdToggler(pwd){
-  // Create show-password checkbox
-  var checkbox = document.createElement('input');
-  checkbox.setAttribute('type', 'checkbox');
-  var id = pwd.id + 'toggler';
-  checkbox.setAttribute('id', id);
+  function makePwdToggler(pwd) {
+    // Create show-password checkbox
+    var checkbox = document.createElement('i');
+    checkbox.classList.add('far fa-eye')
+    var id = pwd.id + 'toggler';
+    checkbox.setAttribute('id', id);
 
-  var label = document.createElement('label');
-  label.setAttribute('for', id);
-  label.appendChild(document.createTextNode('show password'));
+    var label = document.createElement('label');
+    label.setAttribute('for', id);
+    label.appendChild(document.createTextNode('show password'));
 
-  var div = document.createElement('div');
-  div.appendChild(checkbox);
-  div.appendChild(label);
+    var div = document.createElement('div');
+    div.appendChild(checkbox);
 
-  // Add show-password checkbox under password input
-  pwd.insertAdjacentElement('afterend', div);
+    // Add show-password checkbox under password input
+    pwd.insertAdjacentElement('afterend', div);
 
-  // Add toggle password callback
-  function toggle(){
-    if(pwd.type === 'password'){
-      pwd.type = 'text';
-    } else {
-      pwd.type = 'password';
+    // Add toggle password callback
+    function toggle() {
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+      } else {
+        pwd.type = 'password';
+      }
+    }
+    checkbox.onclick = toggle;
+    // For non-mouse usage
+    checkbox.onkeydown = toggle;
+  }
+
+  function setupPwdTogglers() {
+    var pwdInputs = document.querySelectorAll('input[type=password]');
+    for (var i = 0; i < pwdInputs.length; i++) {
+      makePwdToggler(pwdInputs[i]);
     }
   }
-  checkbox.onclick = toggle;
-  // For non-mouse usage
-  checkbox.onkeydown = toggle;
-}
 
-function setupPwdTogglers(){
-  var pwdInputs = document.querySelectorAll('input[type=password]');
-  for (var i = 0; i < pwdInputs.length; i++) {
-    makePwdToggler(pwdInputs[i]);
-  }
-}
-
-setupPwdTogglers();
+  setupPwdTogglers();
 
 </script>
 
