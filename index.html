@@ -407,7 +407,7 @@
 
     const remember = document.getElementsByClassName('rememberMe')
 
-    remember.insertAdjacentHTML(div);
+    remember[0].insertAdjacentHTML('afterend', div);
   }
   makePasswordForgot();
 </script>
