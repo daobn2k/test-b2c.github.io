@@ -278,6 +278,12 @@
       position: relative;
       z-index: 10px;
     }
+
+    .show-password {
+      position: absolute;
+      right: 8px;
+      top: 32%;
+    }
   </style>
 
 <body>
@@ -344,14 +350,16 @@
     checkbox.classList.add('fa-eye')
     var id = pwd.id + 'toggler';
     checkbox.setAttribute('id', id);
+    checkbox.style.cursor = 'pointer'
 
     var label = document.createElement('label');
     label.setAttribute('for', id);
     label.appendChild(document.createTextNode('show password'));
 
     var div = document.createElement('div');
-    div.appendChild(checkbox);
 
+    div.appendChild(checkbox);
+    div.classList.add('show-password')
     // Add show-password checkbox under password input
     pwd.insertAdjacentElement('afterend', div);
 
@@ -359,8 +367,12 @@
     function toggle() {
       if (pwd.type === 'password') {
         pwd.type = 'text';
+        checkbox.classList.remove('fa-eye')
+        checkbox.classList.add('fa-eye-slash')
       } else {
         pwd.type = 'password';
+        checkbox.classList.add('fa-eye')
+        checkbox.classList.remove('fa-eye-slash')
       }
     }
     checkbox.onclick = toggle;
