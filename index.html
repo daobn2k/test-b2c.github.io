@@ -260,6 +260,7 @@
 
       position: absolute;
       right: 0;
+      cursor: pointer;
     }
 
     .working {
@@ -414,15 +415,21 @@
 
 
   function makePasswordForgot() {
-    const a = document.createElement('a');
+    const p = document.createElement('p');
     const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
-    a.setAttribute('href', hrefReset)
-    a.innerText = 'Quên mật khẩu ?'
-    a.classList.add('forgot-pass')
+    p.innerText = 'Quên mật khẩu ?'
+    p.classList.add('forgot-pass')
+    p.setAttribute('id', 'forgot-p')
     const remember = document.getElementById('rememberMe')
-    remember.insertAdjacentElement('afterend', a);
+    remember.insertAdjacentElement('afterend', p);
   }
   makePasswordForgot();
+
+  const domForgotPass = document.getElementById('forgot-p');
+  domForgotPass.addEventListener(('click'), () => {
+    const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
+    window.open(hrefReset, '_blank');
+  })
 </script>
 
 </html>
