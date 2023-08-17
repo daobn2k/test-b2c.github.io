@@ -247,6 +247,19 @@
       font-size: 12px;
     }
 
+    .password-label .forgot-pass {
+      font-size: 12px;
+      font-family: Roboto;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #eb2227;
+
+      position: absolute;
+      right: 0;
+    }
+
     .working {
       display: none;
     }
@@ -289,9 +302,9 @@
       position: relative;
     }
 
-    /* #forgotPassword {
+    #forgotPassword {
       display: none;
-    } */
+    }
   </style>
 
 <body>
@@ -399,18 +412,15 @@
   setupPwdTogglers();
 
 
-  // function makePasswordForgot() {
-  //   const a = document.createElement('a');
-  //   a.setAttribute('href', hrefReset)
-  //   a.innerText = 'Quên mật khẩu'
-  //   var div = document.createElement('div');
-  //   div.appendChild(a);
-  //   div.classList.add('forgot-password')
-
-  //   const remember = document.getElementById('rememberMe')
-  //   remember.insertAdjacentHTML('afterend', div);
-  // }
-  // makePasswordForgot();
+  function makePasswordForgot() {
+    const a = document.createElement('a');
+    a.setAttribute('href', hrefReset)
+    a.innerText = 'Quên mật khẩu ?'
+    a.classList.add('forgot-pass')
+    const remember = document.getElementById('rememberMe')
+    remember.insertAdjacentElement('afterend', a);
+  }
+  makePasswordForgot();
 </script>
 
 </html>
