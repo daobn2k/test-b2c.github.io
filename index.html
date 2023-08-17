@@ -284,6 +284,14 @@
       right: 8px;
       top: 32%;
     }
+
+    .entry-item {
+      position: relative;
+    }
+
+    #forgotPassword {
+      display: none;
+    }
   </style>
 
 <body>
@@ -308,6 +316,7 @@
   const urlParams = new URLSearchParams(queryString);
   const isWeb = urlParams.get('web');
   const locales = urlParams.get('ui_locales');
+  const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
 
   if (isWeb) {
     localStorage.setItem('is_back', true)
@@ -389,6 +398,18 @@
 
   setupPwdTogglers();
 
+
+  const makePasswordForgot = () => {
+    const link = document.createElement('a');
+    link.href = hrefReset;
+    var div = document.createElement('div');
+    div.appendChild(link);
+
+    const remember = document.getElementById('rememberMe')
+
+    remember.insertAdjacentHTML(div);
+  }
+  makePasswordForgot();
 </script>
 
 </html>
