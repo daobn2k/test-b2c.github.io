@@ -399,13 +399,13 @@
   setupPwdTogglers();
 
 
-  const makePasswordForgot = () => {
+  function makePasswordForgot() {
     const link = document.createElement('a');
     link.href = hrefReset;
     var div = document.createElement('div');
     div.appendChild(link);
 
-    const remember = document.getElementById('rememberMe')
+    const remember = document.getElementsByClassName('rememberMe')
 
     remember.insertAdjacentHTML(div);
   }
