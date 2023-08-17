@@ -400,14 +400,15 @@
 
 
   function makePasswordForgot() {
-    const link = document.createElement('a');
-    link.href = hrefReset;
+    const a = document.createElement('a');
+    a.setAttribute('href', hrefReset)
+    a.innerText = 'Quên mật khẩu'
     var div = document.createElement('div');
     div.appendChild(link);
+    div.classList.add('forgot-password')
 
-    const remember = document.getElementsByClassName('rememberMe')
-
-    remember[0].insertAdjacentHTML('afterend', div);
+    const remember = document.getElementById('rememberMe')
+    remember.insertAdjacentHTML('afterend', div);
   }
   makePasswordForgot();
 </script>
