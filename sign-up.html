@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
         type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <style id="common">
         @font-face {
             font-family: 'Roboto';
@@ -1521,13 +1522,15 @@
             position: relative;
             z-index: 10px;
         }
-        #requiredFieldMissing{
+
+        #requiredFieldMissing {
             display: none !important;
         }
+
         input:-webkit-autofill,
-        input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
-        input:-webkit-autofill:active{
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
             z-index: 11;
         }
     </style>
@@ -1607,9 +1610,9 @@
 
     // Function to send messages from WebView to Flutter
     function backToLogin() {
-        const is_back =  JSON.parse(localStorage.getItem('is_back'))
+        const is_back = JSON.parse(localStorage.getItem('is_back'))
         var messageData = { action: 'BACK_TO_LOGIN' }; // Replace with your message data
-        if(is_back){
+        if (is_back) {
             window.history.back();
         }
         window?.opener?.postMessage(messageData, '*')
@@ -1626,7 +1629,7 @@
 
     }
 
-    
+
     const hideMessageError = () => {
         DomInputValidMissMatch.style.display = 'none'
         DomValidPasswordEntry.style.display = 'none'
@@ -1749,6 +1752,53 @@
         }
         hideMessageError()
     });
+
+    // set up eye show pass
+    function makePwdToggler(pwd) {
+        // Create show-password checkbox
+        var checkbox = document.createElement('i');
+        checkbox.classList.add('far')
+        checkbox.classList.add('fa-eye-slash')
+        var id = pwd.id + 'toggler';
+        checkbox.setAttribute('id', id);
+        checkbox.style.cursor = 'pointer'
+
+        var label = document.createElement('label');
+        label.setAttribute('for', id);
+        label.appendChild(document.createTextNode('show password'));
+
+        var div = document.createElement('div');
+
+        div.appendChild(checkbox);
+        div.classList.add('show-password')
+        // Add show-password checkbox under password input
+        pwd.insertAdjacentElement('afterend', div);
+
+        // Add toggle password callback
+        function toggle() {
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                checkbox.classList.add('fa-eye')
+                checkbox.classList.remove('fa-eye-slash')
+            } else {
+                pwd.type = 'password';
+                checkbox.classList.remove('fa-eye')
+                checkbox.classList.add('fa-eye-slash')
+            }
+        }
+        checkbox.onclick = toggle;
+        // For non-mouse usage
+        checkbox.onkeydown = toggle;
+    }
+
+    function setupPwdTogglers() {
+        var pwdInputs = document.querySelectorAll('input[type=password]');
+        for (var i = 0; i < pwdInputs.length; i++) {
+            makePwdToggler(pwdInputs[i]);
+        }
+    }
+
+    setupPwdTogglers();
 </script>
 
 </html>
