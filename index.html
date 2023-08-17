@@ -428,7 +428,7 @@
   const domForgotPass = document.getElementById('forgot-p');
   domForgotPass.addEventListener(('click'), () => {
     const hrefReset = document.getElementById('forgotPassword').getAttribute('href');
-    window.open(hrefReset, '');
+    window.location.assign(hrefReset);
   })
 </script>
 
